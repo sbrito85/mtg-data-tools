@@ -9,6 +9,11 @@ const findBySetName = (setName) => {
   return editions.find(({ name }) => name === setName);
 }
 
+const findBySetName = (setName) => {
+  console.log(setName)
+  return editions.find(({ name }) => name === setName);
+}
+
 
 export const buildBasicList = (data) => {
   if (data) {
@@ -29,7 +34,11 @@ export const buildTcg = (data) => {
 export const buildCardKingdom = (data) => {
   if (data) {
     data = data.map(card => {
-      return `"${card.name}", ${card.edition ? card.edition.name : ''}, 0, ${card.quantity}`;
+      edition = card.edition.name
+      if (card.name.includes("(Borderless)")){
+        edition = card.edition.ckVarient
+      }
+      return `"${card.name}", ${card.edition ? edition : ''}, 0, ${card.quantity}`;
     });
     data.unshift('title,edition,foil,quantity')
     return data.join('\n');
