@@ -3,10 +3,10 @@
     "name": "Commander Masters",
     "shortcode": "CMM",
     "productCode": "CMM",
-    "ckVariant": "Commander Masters Varients"
     "releaseDate": "2020-07-01",
     "category": "cr",
-    "codename": ""
+    "codename": "",
+    "ckVariant": "Commander Masters Varients"
   },
   {
     "name": "Core Set 2021",
