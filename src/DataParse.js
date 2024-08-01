@@ -1,4 +1,5 @@
 // https://deckmaster.info/sets.php
+var edition
 const editions = require('./data/sets.json');
 
 const findByCode = (code) => {
@@ -8,12 +9,6 @@ const findBySetName = (setName) => {
   console.log(setName)
   return editions.find(({ name }) => name === setName);
 }
-
-const findBySetName = (setName) => {
-  console.log(setName)
-  return editions.find(({ name }) => name === setName);
-}
-
 
 export const buildBasicList = (data) => {
   if (data) {
