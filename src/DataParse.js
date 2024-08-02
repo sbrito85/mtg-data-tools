@@ -1,5 +1,7 @@
 // https://deckmaster.info/sets.php
 var edition
+
+const variantRegEx = /\(.*\)/;
 const editions = require('./data/sets.json');
 
 const findByCode = (code) => {
@@ -30,8 +32,8 @@ export const buildCardKingdom = (data) => {
   if (data) {
     data = data.map(card => {
       edition = card.edition.name
-      if (card.name.includes("(Borderless)")){
-        edition = card.edition.ckVarient
+      if (variantRegEx.test(card.name)){
+        edition = edition + " Variants"
       }
       return `"${card.name}", ${card.edition ? edition : ''}, 0, ${card.quantity}`;
     });
