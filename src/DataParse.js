@@ -2,14 +2,14 @@
 var edition
 
 const variantRegEx = /\(.*\)/;
-const editions = require('./data/sets.json');
+const editions = require('./data/set-list.json');
 
 const findByCode = (code) => {
   return editions.find(({ productCode }) => productCode === code);
 }
 const findBySetName = (setName) => {
   console.log(setName)
-  return editions.find(({ name }) => name === setName);
+  return editions.data.find(({ name }) => name === setName);
 }
 
 export const buildBasicList = (data) => {
