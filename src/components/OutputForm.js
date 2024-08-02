@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { TextArea, useFormState, Select, Option, Checkbox, useFormApi } from 'informed';
-import { buildBasicList, buildCardKingdom, buildDeckbox, buildTcg } from './../DataParse';
+import {  buildCardKingdom } from './../DataParse';
 
 const OutputForm = ({ parsedData }) => {
   const formApi = useFormApi();
@@ -19,19 +19,10 @@ const OutputForm = ({ parsedData }) => {
 
 
   useEffect(() => {
-    if (isSimpleList) {
-      formApi.setValue('simpleList', buildBasicList(parsedData));
-    }
     if (isCardKingdom) {
       formApi.setValue('simpleList', buildCardKingdom(parsedData));
     }
-    if (isTcg) {
-      formApi.setValue('simpleList', buildTcg(parsedData));
-    }
-    if (isDeckbox) {
-      formApi.setValue('deckboxList', buildDeckbox(parsedData, condition, language, foil));
-    }
-  }, [parsedData, formApi, isSimpleList, isCardKingdom, isTcg, isDeckbox, condition, language, foil]);
+  }, [parsedData, formApi, isCardKingdom,condition, language, foil]);
 
   return (
     <>

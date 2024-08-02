@@ -1,16 +1,19 @@
 // https://deckmaster.info/sets.php
-var edition
-
-const variantRegEx = /\(.*\)/;
 const editions = require('./data/SetList.json');
-
-const findByCode = (code) => {
-  return editions.find(({ productCode }) => productCode === code);
+var edition
+const vRegEx = /\(.*\)/
+const findByCode = (set) => {
+  console.log(editions.data)
+  console.log(editions.data.find(({ code }) => code === set))
+  return editions.data.find(({ code }) => code === set);
 }
 const findBySetName = (setName) => {
   console.log(setName)
   return editions.data.find(({ name }) => name === setName);
 }
+
+
+
 
 export const buildBasicList = (data) => {
   if (data) {
@@ -32,8 +35,8 @@ export const buildCardKingdom = (data) => {
   if (data) {
     data = data.map(card => {
       edition = card.edition.name
-      if (variantRegEx.test(card.name)){
-        edition = edition + " Variants"
+      if (vRegEx.test(card.name)){
+        edition = card.edition.name + " Variants"
       }
       return `"${card.name}", ${card.edition ? edition : ''}, 0, ${card.quantity}`;
     });

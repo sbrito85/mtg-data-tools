@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { tcgInput, basicListInput, deckBoxInput } from './../DataParse';
+import { tcgInput } from './../DataParse';
 import { inputPlaceholders, } from './../data/placeholder';
 import { TextArea, useFormState, Select, Option} from 'informed';
 const editions = require('./../data/sets.json');
@@ -23,14 +23,10 @@ const InputForm = ({ setParsedData }) => {
   }
 
   useEffect(() => {
-    if (isBasicList) {
-      setParsedData(basicListInput(formState.values.rawInput, formState.values.set));
-    } else if (formState.values.format === 'deckBox') {
-      setParsedData(deckBoxInput(formState.values.rawInput));    
-    }else {
+
       setParsedData(tcgInput(formState.values.rawInput));
-    }
-  }, [formState.values.rawInput, setParsedData, formState.values.set, formState.values.format, isBasicList]);
+    
+  }, [formState.values.rawInput, setParsedData, formState.values.set, formState.values.format]);
 
   return (
     <>
@@ -50,7 +46,7 @@ const InputForm = ({ setParsedData }) => {
       <TextArea
         placeholder={inputPlaceholders[formState.values.format]}
         field='rawInput'
-        onFocus={(event) => event.target.select()}
+        
       />
     </>
   )
