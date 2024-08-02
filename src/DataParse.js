@@ -2,7 +2,7 @@
 var edition
 
 const variantRegEx = /\(.*\)/;
-const editions = require('./data/set-list.json');
+const editions = require('./data/SetList.json');
 
 const findByCode = (code) => {
   return editions.find(({ productCode }) => productCode === code);
